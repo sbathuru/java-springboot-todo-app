@@ -1,42 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-crud-deployment
+  name: java-springboot-todo
 spec:
   selector:
     matchLabels:
-      app: springboot-k8s-mysql
+      app: java-springboot-todo
   replicas: 1
   template:
     metadata:
       labels:
-        app: springboot-k8s-mysql
+        app: java-springboot-todo
     spec:
       containers:
-        - name: springboot-crud-k8s
-          image: springboot-crud-k8s:1.0
+        - name: java-springboot-todo
+          image: java-springboot-todo:latest
           ports:
             - containerPort: 8080
           env: # Setting Enviornmental Variables
-            - name: DB_HOST # Setting Database host address from configMap
+            - name: DB_USERNAME # Setting Database username from configmap
               valueFrom:
                 configMapKeyRef:
-                  name: db-config
-                  key: host
-            - name: DB_NAME # Setting Database name from configMap
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: dbName
-            - name: DB_USERNAME # Setting Database username from Secret
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secrets
+                  name: springboot-todo-config
                   key: username
             - name: DB_PASSWORD # Setting Database password from Secret
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secrets
+                  name: springboot-todo-secrets
                   key: password
 ---
 apiVersion: v1 # Kubernetes API version
@@ -45,7 +35,7 @@ metadata: # Metadata of the resource kind we are creating
   name: springboot-crud-svc
 spec:
   selector:
-    app: springboot-k8s-mysql
+    app: java-springboot-todo
   ports:
     - protocol: "TCP"
       port: 8080 # The port that the service is running on in the cluster
