@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-ENV APP java-springboot-todo 
+ENV APP java-springboot-todo
 ENV VERSION 1.0.0-SNAPSHOT
 
 RUN mkdir /app
