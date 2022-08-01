@@ -1,18 +1,14 @@
-FROM tomcat:alpine  as build
-LABEL MAINTAINER=srinivas.bathuru@gmail.com
+FROM openjdk:8-jdk-alpine
+ENV APP java-springboot-todo 
+ENV VERSION 1.0.0-SNAPSHOT
 
-ENV TOMCAT_PATH /usr/local/tomcat/webapps/
-ENV APP_NAME simpleapp
+RUN mkdir /app
+ADD /target/$APP-$VERSION.jar /app/app.jar
 
-WORKDIR /usr/local/tomcat/webapps/
-RUN pwd
-RUN echo "TOMCAT_PATH = "  $TOMCAT_PATH
+RUN addgroup -S spring 
+RUN adduser -S spring -G spring
+RUN chown -R spring:spring /app
 
-COPY target/$APP_NAME*.war   $TOMCAT_PATH/$APP_NAME.war
-EXPOSE 8080
+USER spring
 
-
-# FROM alpine
-# COPY --from=build   /usr/local/tomcat/   /usr/local/tomcat/
-# COPY tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
-# COPY target/simpleapp*.war /usr/local/tomcat/webapps/simpleapp.war
+ENTRYPOINT ["java","-jar","/app.jar"]
