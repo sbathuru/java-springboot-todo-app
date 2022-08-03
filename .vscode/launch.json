@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TodoManagementSpringBoot2Application<java-springboot-todo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.guides.springboot.todomanagement.TodoManagementSpringBoot2Application",
+            "projectName": "java-springboot-todo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

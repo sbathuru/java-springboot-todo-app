@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "todos")
@@ -19,11 +18,10 @@ public class Todo {
 
 	private String userName;
 
-	@Size(min = 10, message = "Enter at least 10 Characters...")
 	private String description;
 
 	private Date targetDate;
-	
+
 	public Todo() {
 		super();
 	}
