@@ -143,7 +143,7 @@ pipeline {
                }
        failure { 
                echo 'Pipeline Failure' 
-               
+               slackSend (message: "Build deployed successfully - ${env.JOB_NAME}")
               }
        always {
                     mail bcc: '', 
