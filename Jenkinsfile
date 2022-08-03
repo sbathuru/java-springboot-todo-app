@@ -145,13 +145,16 @@ pipeline {
 */
     }
 
-    post { success { 
-           echo 'Pipeline Sucessfully Finished' 
-           slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-            
-           }
-           failure { echo 'Pipeline Failure' }
-           always {
+    post { 
+       success { 
+             echo 'Pipeline Sucessfully Finished' 
+             slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+       failure { 
+            echo 'Pipeline Failure' 
+            slackSend "Build Failure !!! - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+       }
+       always {
                     mail bcc: '', 
                     body: """ Hi Team, 
                           Your project got Build and Deployed successfully!!!
@@ -169,6 +172,6 @@ pipeline {
                     replyTo: '', 
                     subject: "Sucess !!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
                     to: 'srinivas.bathuru@gmail.com'
-           } 
-         }
+        } 
+   }
 }
