@@ -1,0 +1,5 @@
+apiVersion: v2
+name: java-springboot-todo
+description: A Helm chart for java-springboot-todo
+appVersion: 1.16.0
+version: 0.1.0
