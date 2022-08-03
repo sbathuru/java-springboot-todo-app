@@ -145,7 +145,11 @@ pipeline {
 */
     }
 
-    post { success { echo 'Pipeline Sucessfully Finished' }
+    post { success { 
+           echo 'Pipeline Sucessfully Finished' 
+           slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            
+           }
            failure { echo 'Pipeline Failure' }
            always {
                     mail bcc: '', 
