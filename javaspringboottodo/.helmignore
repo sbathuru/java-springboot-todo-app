@@ -21,3 +21,5 @@
 .idea/
 *.tmproj
 .vscode/
+.git
+Convert K8sYAML into Helm Chart.pdf
