@@ -101,7 +101,7 @@ pipeline {
                 }
             }
          }
-*/
+
         stage('Deploy Into PROD (K8S)') {
            steps {   
                //sh "kubectl apply -f simpleapp-deploy-k8s.yaml"
@@ -113,6 +113,7 @@ pipeline {
                 )
             }
          }
+         */
 /*
          stage('Build Helm Charts') {
             steps {
@@ -145,7 +146,7 @@ pipeline {
                }
        failure { 
                echo 'Pipeline Failure' 
-               slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+               
               }
        always {
                     mail bcc: '', 
