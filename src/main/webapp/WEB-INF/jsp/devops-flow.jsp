@@ -28,17 +28,6 @@
 									</tr>
 									<tr>
 										<td>
-											Current USER
-										</td>
-										<td>${currUser}</td>
-									</tr>
-									<tr>
-										<td>
-											Present Working DIR</td>
-										<td>${pwd}</td>
-									</tr>
-									<tr>
-										<td>
 											Configmap Value
 										</td>
 										<td>${configmapValue}</td>

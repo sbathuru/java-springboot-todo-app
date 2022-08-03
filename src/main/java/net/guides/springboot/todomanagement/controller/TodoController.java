@@ -37,14 +37,6 @@ public class TodoController {
 		return environment.getProperty("kubernetes.secret");
 	}
 
-	public String getCurrUser() {
-		return environment.getProperty("kubernetes.user");
-	}
-
-	public String getPWD() {
-		return environment.getProperty("kubernetes.pwd");
-	}
-
 	public String getPath() {
 		return environment.getProperty("kubernetes.path");
 	}
@@ -77,8 +69,6 @@ public class TodoController {
 		model.put("ipaddress", inetAddress);
 		model.put("configmapValue", getConfigMap());
 		model.put("secretsValue", getSecret());
-		model.put("currUser", getCurrUser());
-		model.put("pwd", getPWD());
 		model.put("path", getPath());
 
 		return "devops-flow";
