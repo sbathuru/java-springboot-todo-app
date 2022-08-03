@@ -137,7 +137,7 @@ pipeline {
         }
       }
 */
-    }
+
     post {
        success { 
                 echo 'Pipeline Sucessfully Finished' 
@@ -168,3 +168,4 @@ pipeline {
                }
           }
    }
+}
