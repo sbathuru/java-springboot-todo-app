@@ -7,23 +7,21 @@
 				<html lang="en">
 
 				<head>
-					<spring:url value="/resources/images" var="images" />
+					<spring:url value="/resources" var="images" />
 				</head>
 
 				<body>
 					<div class="container">
-						<img alt="Devops Flow" src="https://sysdig.com/wp-content/uploads/Blog-Kubernetes-Monitoring-with-Prometheus-4-Architecture-Overview.png" style="width:700px;height:250px;" /></br>
+						<img alt="Devops Flow" src="img/devops.jpg" style="width:1000px;height:350px;" /></br>
 					</div>
 
 					<div class=" container">
 						<div class="row">
 							<div class="col-md-8"> </br>
-								<h4>Srini Devops Lab, Hyd.</h4>
-								<h5>Contact @ +91-9876543210</h5> <br>
 
-								<table>
+								<table style="font-size: 12pt">
 									<tr>
-										<td style="width: 150px">
+										<td style="width: 200px">
 											IP Address
 										</td>
 										<td>${ipaddress}</td>
@@ -36,7 +34,7 @@
 									</tr>
 									<tr>
 										<td>
-											PResent Working DIR</td>
+											Present Working DIR</td>
 										<td>${pwd}</td>
 									</tr>
 									<tr>
@@ -52,10 +50,13 @@
 										<td>${secretsValue}</td>
 									</tr>
 								</table>
+
 							</div>
 						</div>
 						<hr>
 						<footer>
+							<h4>Srini Devops Lab, Hyd.</h4>
+							<h5>Contact @ +91-9876543210</h5>
 							<h5>&copy; Srini Labs 2021</h5>
 							<h6 id='ct' style=" text-align:right;">
 							</h6>

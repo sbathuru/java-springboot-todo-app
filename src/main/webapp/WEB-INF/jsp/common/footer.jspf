@@ -10,10 +10,9 @@
 
 
 <div class="footer">
-	<h1>
-		<a>
-			Spring Boot Todo App</a>
-	</h1>
+	<h4>
+			Spring Boot Todo App
+	</h4>
 </div>
 </body>
 </html>
