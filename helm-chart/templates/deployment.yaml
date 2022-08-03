@@ -18,12 +18,12 @@ spec:
           ports:
             - containerPort: 8080
           env: # Setting Enviornmental Variables
-            - name: DB_USERNAME # Setting Database username from configmap
+            - name: K8S_UNAME_CONFIGMAP # Setting Database username from configmap
               valueFrom:
                 configMapKeyRef:
                   name: springboot-todo-config
                   key: username
-            - name: DB_PASSWORD # Setting Database password from Secret
+            - name: K8S_PASSWORD_SECRET # Setting Database password from Secret
               valueFrom:
                 secretKeyRef:
                   name: springboot-todo-secrets
