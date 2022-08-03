@@ -14,31 +14,17 @@ spec:
     spec:
       containers:
         - name: java-springboot-todo
-          image: java-springboot-todo:latest
+          image: sbathuru/java-springboot-todo:latest
           ports:
             - containerPort: 8080
           env: # Setting Enviornmental Variables
             - name: K8S_UNAME_CONFIGMAP # Setting Database username from configmap
               valueFrom:
                 configMapKeyRef:
-                  name: springboot-todo-config
+                  name: java-springboot-todo-configmap
                   key: username
             - name: K8S_PASSWORD_SECRET # Setting Database password from Secret
               valueFrom:
                 secretKeyRef:
-                  name: springboot-todo-secrets
+                  name: java-springboot-todo-secrets
                   key: password
----
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
-  name: springboot-crud-svc
-spec:
-  selector:
-    app: java-springboot-todo
-  ports:
-    - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8080 # The port exposed by the service
-  type: ClusterIP # type of the service.
-
