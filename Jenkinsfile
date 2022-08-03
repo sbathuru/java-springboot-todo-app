@@ -139,11 +139,17 @@ pipeline {
     post {
        success { 
                 echo 'Pipeline Sucessfully Finished' 
-                slackSend (message: "Build deployed successfully - ${env.JOB_NAME}")
+                               slackSend (
+                  message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER}  \n 
+                  More Info at ${env.BUILD_URL} "
+                )
                }
        failure { 
                echo 'Pipeline Failure' 
-               slackSend (message: "Build deployed successfully - ${env.JOB_NAME}")
+               slackSend (
+                  message: "Build Failure - ${env.JOB_NAME} ${env.BUILD_NUMBER} \n 
+                  More Info at ${env.BUILD_URL} "
+                )
               }
        always {
                     mail bcc: '', 
