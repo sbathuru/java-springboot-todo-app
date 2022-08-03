@@ -22,17 +22,14 @@ pipeline {
                      echo "$USER"
                      echo "$HOME"
                      git credentialsId: 'github-credentials' , url: 'https://github.com/sbathuru/java-springboot-todo.git',  branch: 'master'   
-                    
                 }
            }
-
          stage ('Maven Build') {
                         steps {
                             //sh "${mavenHome}/bin/mvn clean versions:set -Dver=${VER_NUM} package "
                             sh "${mavenHome}/bin/mvn clean package "
                        }
           }
-
      stage ('SonarQube Analysis') {
         steps {
               withSonarQubeEnv('sonar_server') {
@@ -72,7 +69,6 @@ pipeline {
              )
          }
             }
-          
           stage('Docker Build & Push') {    
                   steps {
                           script{        // To add Scripted Pipeline sentences into a Declarative
@@ -117,7 +113,6 @@ pipeline {
                 )
             }
          }
-
 /*
          stage('Build Helm Charts') {
             steps {
@@ -127,7 +122,6 @@ pipeline {
 					  }
           }
         } 
-
      	  stage ('Deploy Into PROD - Helm Charts')  {
 	      steps {
            sh "helm version"
@@ -144,7 +138,6 @@ pipeline {
       }
 */
     }
-
     post { 
        success { 
              echo 'Pipeline Sucessfully Finished' 
