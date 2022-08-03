@@ -1,9 +1,6 @@
-
-   
 pipeline {
    //agent { label 'aws-jenkins-slave' }     
    agent any
-   
     triggers {
           pollSCM('4 4 4 * *')
     }
@@ -16,28 +13,27 @@ pipeline {
     tools{
           maven 'maven'
      }
+
     stages {
            stage ('Git Checkout') {
                  steps {
-                     echo "$USER"
-                     echo "$HOME"
                      git credentialsId: 'github-credentials' , url: 'https://github.com/sbathuru/java-springboot-todo.git',  branch: 'master'   
-                }
+                  }
            }
-         stage ('Maven Build') {
+           stage ('Maven Build') {
                         steps {
                             //sh "${mavenHome}/bin/mvn clean versions:set -Dver=${VER_NUM} package "
                             sh "${mavenHome}/bin/mvn clean package "
                        }
+           }
+           stage ('SonarQube Analysis') {
+                 steps {
+                   withSonarQubeEnv('sonar_server') {
+                    //sh '${mavenHome}/bin/mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=simpleapp'
+                    //sh "${mavenHome}/bin/mvn sonar:sonar"
+                   }
+                  }
           }
-     stage ('SonarQube Analysis') {
-        steps {
-              withSonarQubeEnv('sonar_server') {
-                   //sh '${mavenHome}/bin/mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=simpleapp'
-                 //sh "${mavenHome}/bin/mvn sonar:sonar"
-              }
-            }
-      }
           stage ('Artifactory configuration') {
             steps {
                 rtServer (
@@ -67,7 +63,7 @@ pipeline {
                 rtPublishBuildInfo (
                     serverId: "jfrog_server"
              )
-         }
+             }
             }
           stage('Docker Build & Push') {    
                   steps {
@@ -89,8 +85,8 @@ pipeline {
                           sh "docker push sbathuru/java-springboot-todo:${VER_NUM}" 
                           sh "docker push sbathuru/java-springboot-todo:latest" 
                           //sh "docker rmi sbathuru/java-springboot-todo" 
-                 } 
-          }
+                       } 
+           }
           }
 /*    
         stage('Deploy Into DEV (Docker)') {
