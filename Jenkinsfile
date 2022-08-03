@@ -152,7 +152,8 @@ pipeline {
         }
        failure { 
             echo 'Pipeline Failure' 
-            slackSend "Build Failure !!! - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            }
        }
        always {
                     mail bcc: '', 
