@@ -140,8 +140,7 @@ pipeline {
        success { 
                 echo 'Pipeline Sucessfully Finished' 
                                slackSend (
-                  message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER}  \n 
-                  More Info at ${env.BUILD_URL} "
+                  message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
                }
        failure { 
