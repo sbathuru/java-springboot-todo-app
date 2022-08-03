@@ -91,6 +91,7 @@ pipeline {
                           //sh "docker rmi sbathuru/java-springboot-todo" 
                  } 
           }
+          }
 /*    
         stage('Deploy Into DEV (Docker)') {
            steps {   
@@ -168,5 +169,4 @@ pipeline {
                     to: 'srinivas.bathuru@gmail.com'
                }
           }
-   }
 }
