@@ -37,10 +37,6 @@ public class TodoController {
 		return environment.getProperty("kubernetes.secret");
 	}
 
-	public String getPath() {
-		return environment.getProperty("kubernetes.path");
-	}
-
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		// Date - dd/MM/yyyy
@@ -69,8 +65,6 @@ public class TodoController {
 		model.put("ipaddress", inetAddress);
 		model.put("configmapValue", getConfigMap());
 		model.put("secretsValue", getSecret());
-		model.put("path", getPath());
-
 		return "devops-flow";
 	}
 
