@@ -140,13 +140,13 @@ pipeline {
        success { 
                 echo 'Pipeline Sucessfully Finished' 
                                slackSend (
-                  message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
+                  message: "Build SUCESS !!! - JOB : ${env.JOB_NAME} BUILD_NO ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
                }
        failure { 
                echo 'Pipeline Failure' 
                slackSend (
-                  message: "Build Failure - ${env.JOB_NAME} ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
+                  message: "Build FAILURE !!! - JOB : ${env.JOB_NAME} BUILD_NO ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
               }
        always {
