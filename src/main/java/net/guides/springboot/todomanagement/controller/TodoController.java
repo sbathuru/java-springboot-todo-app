@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.core.env.Environment;
 
 import net.guides.springboot.todomanagement.model.Todo;
 import net.guides.springboot.todomanagement.service.ITodoService;
@@ -24,6 +25,29 @@ public class TodoController {
 
 	@Autowired
 	private ITodoService todoService;
+
+	@Autowired
+	private Environment environment;
+
+	public String getConfigMap() {
+		return environment.getProperty("kubernetes.configmap");
+	}
+
+	public String getSecret() {
+		return environment.getProperty("kubernetes.secret");
+	}
+
+	public String getCurrUser() {
+		return environment.getProperty("kubernetes.user");
+	}
+
+	public String getPWD() {
+		return environment.getProperty("kubernetes.pwd");
+	}
+
+	public String getPath() {
+		return environment.getProperty("kubernetes.path");
+	}
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -51,6 +75,12 @@ public class TodoController {
 			ip = "127.1.1.2 - Exception";
 		}
 		model.put("ipaddress", inetAddress);
+		model.put("configmapValue", getConfigMap());
+		model.put("secretsValue", getSecret());
+		model.put("currUser", getCurrUser());
+		model.put("pwd", getPWD());
+		model.put("path", getPath());
+
 		return "devops-flow";
 	}
 
