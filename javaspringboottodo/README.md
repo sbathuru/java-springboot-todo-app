@@ -25,3 +25,11 @@ helm upgrade javaspringboottodo javaspringboottodo
 helm uninstall javaspringboottodo
 
 #### ArtifactHub
+helm search hub
+helm repo add <name> <repository link>
+helm repo list
+helm repo update
+
+export HELM_EXPERIMENTAL_OCI=1
+helm registry login -u sbathuru javaspringboottodo
+
