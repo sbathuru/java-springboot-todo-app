@@ -19,5 +19,9 @@ helm repo index javaspringboottodo
 
 #### install the Helm Chart
 helm install javaspringboottodo javaspringboottodo
+helm ls
+helm history javaspringboottodo
 helm upgrade javaspringboottodo javaspringboottodo
 helm uninstall javaspringboottodo
+
+#### ArtifactHub
