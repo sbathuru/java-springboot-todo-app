@@ -33,3 +33,4 @@ helm repo update
 export HELM_EXPERIMENTAL_OCI=1
 helm registry login -u sbathuru javaspringboottodo
 
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/javaspringboottodo)](https://artifacthub.io/packages/search?repo=javaspringboottodo)
