@@ -76,7 +76,7 @@ pipeline {
                                          //  do nothing if there is an exception
                                     }
                             }
-                          
+                          sh "docker ps"
                           withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerpwd')]) {
                                  sh "docker login -u sbathuru -p ${dockerpwd}"
                          }
