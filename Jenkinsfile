@@ -17,7 +17,9 @@ pipeline {
     stages {
            stage ('Git Checkout') {
                  steps {
-                     git credentialsId: 'github-credentials' , url: 'https://github.com/sbathuru/java-springboot-todo.git',  branch: 'master'   
+                     git credentialsId: 'github-credentials' , 
+                         url: 'https://github.com/sbathuru/java-springboot-todo.git',  
+                         branch: 'master'   
                   }
            }
            stage ('Maven Build') {
@@ -66,26 +68,27 @@ pipeline {
              }
             }
           stage('Docker Build & Push') {    
-                  steps {
-                          script{        // To add Scripted Pipeline sentences into a Declarative
-                                    try{
-                                        sh "pwd"
-                                        //sh "docker rm -f simpleapp || true"
-                                        //sh "docker rmi sbathuru/simpleapp || true"       //sh 'docker rmi $(docker images sbathuru/simpleapp)''
-                                        }catch(error){
-                                         //  do nothing if there is an exception
-                                    }
-                            }
-                          sh "docker ps"
-                          withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerpwd')]) {
-                                 sh "docker login -u sbathuru -p ${dockerpwd}"
-                         }
-                          sh "docker build -t sbathuru/java-springboot-todo:latest ."
-                          sh "docker tag sbathuru/java-springboot-todo:latest  sbathuru/java-springboot-todo:${VER_NUM}"
-                          sh "docker push sbathuru/java-springboot-todo:${VER_NUM}" 
-                          sh "docker push sbathuru/java-springboot-todo:latest" 
-                          //sh "docker rmi sbathuru/java-springboot-todo" 
-                       } 
+            steps {
+               script{        // To add Scripted Pipeline sentences into a Declarative
+                 try{
+                     sh "pwd"
+                     //sh "docker rm -f simpleapp || true"
+                     //sh "docker rmi sbathuru/simpleapp || true"       
+                     //sh 'docker rmi $(docker images sbathuru/simpleapp)''
+                 }catch(error){
+                    //  do nothing if there is an exception
+                 }
+               }
+              sh "docker ps"
+              withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerpwd')]) {
+                sh "docker login -u sbathuru -p ${dockerpwd}"
+              }
+              sh "docker build -t sbathuru/java-springboot-todo:latest ."
+              sh "docker tag sbathuru/java-springboot-todo:latest  sbathuru/java-springboot-todo:${VER_NUM}"
+              sh "docker push sbathuru/java-springboot-todo:${VER_NUM}" 
+              sh "docker push sbathuru/java-springboot-todo:latest" 
+              //sh "docker rmi sbathuru/java-springboot-todo" 
+           } 
            }
           }
 /*    
