@@ -165,21 +165,21 @@ def SendEmailNotification(String result) {
      } else { 
        bcontent =  "Your project got Failed during Build and Deployement !!!"
      }
-                         mail bcc: '', 
-                    body: """Hi Team, 
-                          ${bcontent}
+      mail bcc: '', 
+      body: """Hi Team, 
+      ${bcontent}
 
-                    Please find the details as below,
-	                        Job Name: ${env.JOB_NAME}
-	                        Job URL : ${env.JOB_URL}
-                          Build URL: ${env.BUILD_URL}
+      Please find the details as below,
+      Job Name: ${env.JOB_NAME}
+      Job URL : ${env.JOB_URL}
+      Build URL: ${env.BUILD_URL}
 
-                    Thanks
-                    DevOps Team""", 
-                    cc: '', 
-                    from: '', 
-                    replyTo: '', 
-                    subject: "${result}!!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
-                    to: 'srinivas.bathuru@gmail.com'
+      Thanks
+      DevOps Team""", 
+      cc: '', 
+      from: '', 
+      replyTo: '', 
+      subject: "${result}!!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
+      to: 'srinivas.bathuru@gmail.com'
 
   }
