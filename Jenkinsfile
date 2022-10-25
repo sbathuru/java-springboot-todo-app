@@ -179,5 +179,5 @@ def SendEmailNotification(String result) {
       from: '', 
       replyTo: '', 
       subject: "${result}!!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
-      to: 'srinivas.bathuru@gmail.com'
+      to: 'bathuru.srinivas@gmail.com'
   }
