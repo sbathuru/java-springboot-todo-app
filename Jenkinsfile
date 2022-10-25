@@ -158,7 +158,6 @@ pipeline {
 }
 
 def SendEmailNotification(String result) {
-     echo result
      def bcontent =""
      if(result == "Sucess") {
        bcontent = "Your project got Build and Deployed successfully !!!"
@@ -181,5 +180,4 @@ def SendEmailNotification(String result) {
       replyTo: '', 
       subject: "${result}!!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
       to: 'srinivas.bathuru@gmail.com'
-
   }
