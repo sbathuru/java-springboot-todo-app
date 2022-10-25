@@ -31,8 +31,8 @@ pipeline {
            stage ('SonarQube Analysis') {
                  steps {
                    withSonarQubeEnv('sonar_server') {
-                    //sh '${mavenHome}/bin/mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=simpleapp'
-                    //sh "${mavenHome}/bin/mvn sonar:sonar"
+                    sh '${mavenHome}/bin/mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-springboot-todo'
+                    sh "${mavenHome}/bin/mvn sonar:sonar"
                    }
                   }
           }
