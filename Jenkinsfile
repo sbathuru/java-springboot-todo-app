@@ -139,7 +139,7 @@ pipeline {
     post {
        success { 
                 echo 'Pipeline Sucessfully Finished' 
-                               slackSend (
+                slackSend (
                   message: "Build SUCESS !!! - JOB : ${env.JOB_NAME} BUILD_NO ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
                }
@@ -148,6 +148,7 @@ pipeline {
                slackSend (
                   message: "Build FAILURE !!! - JOB : ${env.JOB_NAME} BUILD_NO ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
+                SendEmailNotification("Srini1234")
               }
        always {
                     mail bcc: '', 
@@ -168,5 +169,9 @@ pipeline {
                     subject: "Sucess !!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
                     to: 'srinivas.bathuru@gmail.com'
                }
+          }
+
+          def SendEmailNotification(String result) {
+            echo result
           }
 }
