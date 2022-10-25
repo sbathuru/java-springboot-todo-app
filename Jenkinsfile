@@ -169,14 +169,13 @@ def SendEmailNotification(String result) {
                     body: """Hi Team, 
                           ${bcontent}
 
-                          Please find the details as below,
+                    Please find the details as below,
 	                        Job Name: ${env.JOB_NAME}
 	                        Job URL : ${env.JOB_URL}
-                          Build Number: ${env.BUILD_NUMBER} 
                           Build URL: ${env.BUILD_URL}
 
-                          Thanks
-                          DevOps Team""", 
+                    Thanks
+                    DevOps Team""", 
                     cc: '', 
                     from: '', 
                     replyTo: '', 
