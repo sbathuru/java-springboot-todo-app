@@ -174,4 +174,23 @@ pipeline {
 
 def SendEmailNotification(String result) {
      echo result
+
+                         mail bcc: '', 
+                    body: """ ${result} Hi Team, 
+                          Your project got Build and Deployed successfully!!!
+
+                          Please find the details as below,
+	                        Job Name: ${env.JOB_NAME}
+	                        Job URL : ${env.JOB_URL}
+                          Build Number: ${env.BUILD_NUMBER} 
+                          Build URL: ${env.BUILD_URL}
+
+                          Thanks
+                          DevOps Team""", 
+                    cc: '', 
+                    from: '', 
+                    replyTo: '', 
+                    subject: "${result} Sucess !!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
+                    to: 'srinivas.bathuru@gmail.com'
+
   }
