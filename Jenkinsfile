@@ -175,7 +175,7 @@ pipeline {
 def SendEmailNotification(String result) {
      echo result
      def bcontent =""
-     if(result = "Sucess") {
+     if(result == "Sucess") {
        bcontent = "Your project got Build and Deployed successfully !!!"
      else 
        bcontent =  "Your project got Failed during Build and Deployement !!!"
