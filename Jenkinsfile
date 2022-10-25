@@ -170,8 +170,8 @@ pipeline {
                     to: 'srinivas.bathuru@gmail.com'
                }
           }
-
-          def SendEmailNotification(String result) {
-            echo result
-          }
 }
+
+def SendEmailNotification(String result) {
+     echo result
+  }
