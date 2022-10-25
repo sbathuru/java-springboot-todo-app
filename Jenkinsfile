@@ -152,6 +152,7 @@ pipeline {
                 SendEmailNotification("Failed")
               }
        always {
+              echo 'From Always!!' 
                }
           }
 }
