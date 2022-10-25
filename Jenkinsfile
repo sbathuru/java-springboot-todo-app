@@ -142,32 +142,16 @@ pipeline {
                 slackSend (
                   message: "Build SUCESS !!! - JOB : ${env.JOB_NAME} BUILD_NO ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
+                SendEmailNotification("Sucess")
                }
        failure { 
                echo 'Pipeline Failure' 
                slackSend (
                   message: "Build FAILURE !!! - JOB : ${env.JOB_NAME} BUILD_NO ${env.BUILD_NUMBER} More Info at ${env.BUILD_URL} "
                 )
-                SendEmailNotification("Srini1234")
+                SendEmailNotification("Failed")
               }
        always {
-                    mail bcc: '', 
-                    body: """ Hi Team, 
-                          Your project got Build and Deployed successfully!!!
-
-                          Please find the details as below,
-	                        Job Name: ${env.JOB_NAME}
-	                        Job URL : ${env.JOB_URL}
-                          Build Number: ${env.BUILD_NUMBER} 
-                          Build URL: ${env.BUILD_URL}
-
-                          Thanks
-                          DevOps Team""", 
-                    cc: '', 
-                    from: '', 
-                    replyTo: '', 
-                    subject: "Sucess !!! - ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}", 
-                    to: 'srinivas.bathuru@gmail.com'
                }
           }
 }
