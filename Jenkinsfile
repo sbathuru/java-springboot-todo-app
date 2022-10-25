@@ -177,9 +177,9 @@ def SendEmailNotification(String result) {
      def bcontent =""
      if(result == "Sucess") {
        bcontent = "Your project got Build and Deployed successfully !!!"
-     else 
+     } else { 
        bcontent =  "Your project got Failed during Build and Deployement !!!"
-
+     }
                          mail bcc: '', 
                     body: """Hi Team, 
                           ${bcontent}
