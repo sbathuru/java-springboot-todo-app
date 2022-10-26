@@ -1,10 +1,28 @@
 # todo-management-spring-boot
 
-# Mini Todo Management Project using Spring Boot + Spring MVC + Spring Security + JSP + Hibernate + H2 Database
+## Mini Todo Management Project using Spring Boot + Spring MVC + Spring Security + JSP + Hibernate + H2 Database
 
+### Prerequisite
+1.Create a kubernets cluster using eks/aks <br>
+2.$kubectl get svc    ##Get load balancer <br>
+3.update above "Load Balncer Name" in  "Go-daddy site"   >  ( sapp1 - LB )
 
-Credentials : admin/admin
+### Application Deploy
+$ kubectl apply -f simpleapp-deploy.yaml <br>
+$ kubectl apply -f simpleapp-ingress-rules.yaml
 
+### Application Access
+http://app1.bathuru.shop/simpleapp/
+
+### Application Cleanup
+
+$ kubectl delete -f simpleapp-deploy.yaml <br>
+$ kubectl delete -f simpleapp-ingress-rules.yaml
+
+### Local Access
+http://127.0.0.1:8080/simpleapp/
 
 http://localhost:8080/actuator
 /health
+
+Credentials : admin/admin
