@@ -26,6 +26,7 @@ pipeline {
                         steps {
                             //sh "${mavenHome}/bin/mvn clean versions:set -Dver=${VER_NUM} package "
                             sh "${mavenHome}/bin/mvn clean test package "
+                            junit '**/target/surefire-reports/TEST-*.xml'
                        }
            }
            stage ('SonarQube Analysis') {
