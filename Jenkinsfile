@@ -25,7 +25,7 @@ pipeline {
            stage ('Maven Build') {
                         steps {
                             //sh "${mavenHome}/bin/mvn clean versions:set -Dver=${VER_NUM} package "
-                            sh "${mavenHome}/bin/mvn clean test package "
+                            sh "${mavenHome}/bin/mvn clean test package verify"
                             junit '**/target/surefire-reports/TEST-*.xml'
                             jacoco()
                        }
