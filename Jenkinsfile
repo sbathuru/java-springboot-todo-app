@@ -25,7 +25,7 @@ pipeline {
            stage ('Maven Build') {
                         steps {
                             //sh "${mavenHome}/bin/mvn clean versions:set -Dver=${VER_NUM} package "
-                            sh "${mavenHome}/bin/mvn clean package "
+                            sh "${mavenHome}/bin/mvn clean test package "
                        }
            }
            stage ('SonarQube Analysis') {
