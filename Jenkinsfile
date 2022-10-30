@@ -26,6 +26,10 @@ pipeline {
                         steps {
                             //sh "${mavenHome}/bin/mvn clean versions:set -Dver=${VER_NUM} package "
                             sh "${mavenHome}/bin/mvn clean test package verify"
+                       }
+           }
+           stage ('Test & Jacoco Analysis') {
+                        steps {
                             junit '**/target/surefire-reports/TEST-*.xml'
                             jacoco()
                        }
@@ -34,7 +38,7 @@ pipeline {
                  steps {
                    withSonarQubeEnv('sonar_server') {
                     //sh "${mavenHome}/bin/mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-springboot-todo"
-                    sh "${mavenHome}/bin/mvn sonar:sonar"
+                    sh "${mavenHome}/bin/mvn sonar:sonar -Dsonar.projectKey=java-springboot-todo"
                    }
                   }
           }
