@@ -17,7 +17,7 @@ pipeline {
     stages {
            stage ('Git Checkout') {
                  steps {
-                     git credentialsId: 'github-credentials' , 
+                     git credentialsId: 'github_credentials' , 
                          url: 'https://github.com/sbathuru/java-springboot-todo.git',  
                          branch: 'master'   
                   }
