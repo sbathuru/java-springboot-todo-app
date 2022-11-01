@@ -36,10 +36,10 @@ pipeline {
            }
            stage ('SonarQube Analysis') {
                  steps {
-                   withSonarQubeEnv('sonar_server') {
-                    sh "${mavenHome}/bin/mvn sonar:sonar -Dsonar.projectKey=java-springboot-todo"
-                   }
-                  }
+                      withSonarQubeEnv('sonar_server') {
+                         sh "${mavenHome}/bin/mvn sonar:sonar -Dsonar.projectKey=java-springboot-todo"
+                      }
+                }
           }
           stage ('Artifactory configuration') {
             steps {
