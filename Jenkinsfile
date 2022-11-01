@@ -77,11 +77,7 @@ pipeline {
                script{        // To add Scripted Pipeline sentences into a Declarative
                  try{
                      sh "pwd"
-                     //sh "docker rm -f simpleapp || true"
-                     //sh "docker rmi sbathuru/simpleapp || true"       
-                     //sh 'docker rmi $(docker images sbathuru/simpleapp)''
                  }catch(error){
-                    //  do nothing if there is an exception
                  }
                }
               sh "docker ps"
@@ -92,7 +88,7 @@ pipeline {
               sh "docker tag sbathuru/java-springboot-todo:latest  sbathuru/java-springboot-todo:${VER_NUM}"
               sh "docker push sbathuru/java-springboot-todo:${VER_NUM}" 
               sh "docker push sbathuru/java-springboot-todo:latest" 
-              //sh "docker rmi sbathuru/java-springboot-todo" 
+              sh "docker rmi sbathuru/java-springboot-todo" 
            } 
            }
           }
@@ -110,7 +106,6 @@ pipeline {
         stage('Deploy Into PROD (K8S)') {
            steps {   
                //sh "kubectl apply -f simpleapp-deploy-k8s.yaml"
-
                kubernetesDeploy(
                 configs: 'simpleapp-deploy-k8s.yaml',
                 kubeconfigId: 'k8s_cluster_kubeconfig',
@@ -123,8 +118,8 @@ pipeline {
          stage('Build Helm Charts') {
             steps {
               dir('charts') {
-                       sh "helm package simpleapp"
-					   sh "helm push-artifactory --username sbathuru --password Sridevi@116   simpleapp-helm-0.0.3.tgz https://sbathuru.jfrog.io/artifactory/simpleapp-helm-local"
+                sh "helm package simpleapp"
+					      sh "helm push-artifactory --username sbathuru --password Sridevi@116   simpleapp-helm-0.0.3.tgz https://sbathuru.jfrog.io/artifactory/simpleapp-helm-local"
 					  }
           }
         } 
@@ -143,7 +138,6 @@ pipeline {
         }
       }
 */
-
     post {
        success { 
                 echo 'Pipeline Sucessfully Finished' 
