@@ -15,8 +15,6 @@ Convert and Update Chart.yaml, deployment.yaml, service.yaml and values.yaml
  $ helm package javaspringboottodo
  $ helm repo index javaspringboottodo
 
-
-
 #### install the Helm Chart
  $ helm install javaspringboottodo javaspringboottodo
  $ helm ls
