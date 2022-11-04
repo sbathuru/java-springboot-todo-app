@@ -7,4 +7,5 @@ RUN apk --no-cache add tree
 ADD target/$APP-$VERSION.war /app.war
 ENTRYPOINT ["java","-jar","app.war"]
 EXPOSE 8080
+# Springboot internally calls tomcat to run java application
 
