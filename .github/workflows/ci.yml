@@ -21,6 +21,13 @@ jobs:
 
       - run: ls ./target
 
+      - name: Generate JaCoCo Badge
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          badges-directory: badges
+          generate-branches-badge: true
+          generate-summary: true
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
