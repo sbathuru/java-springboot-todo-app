@@ -64,3 +64,9 @@ jobs:
           to: srinivas.bathuru@gmail.com
           # from email name
           from: srinivas.bathuru@gmail.com
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: 7a754c2f0eefd674b5f08f51ea207fd7e049c0c4
+          SONAR_HOST_URL: https://sonarcloud.io
