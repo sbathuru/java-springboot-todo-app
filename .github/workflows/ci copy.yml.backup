@@ -19,4 +19,12 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -Pcoverage
 
+      - run: mkdir artifact && cp target/*.jar artifact
+
       - run: ls -a
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: java-springboot-todo-1.0.0-SNAPSHOT.jar
+          path: artifact
