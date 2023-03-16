@@ -28,6 +28,12 @@ jobs:
           generate-branches-badge: true
           generate-summary: true
 
+      - name: Upload JaCoCo coverage as workflow artifactko
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: ./target/site/jacoco/
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
