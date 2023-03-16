@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-springboot-todo-1.0.0-SNAPSHOT.war
-          path: ./target
+          path: ./target/java-springboot-todo-1.0.0-SNAPSHOT.war
