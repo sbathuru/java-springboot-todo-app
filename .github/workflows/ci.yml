@@ -19,4 +19,4 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -Pcoverage
 
-      - run: ls -a
+      - run: ls ./target
