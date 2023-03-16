@@ -20,3 +20,9 @@ jobs:
         run: mvn -B package -Pcoverage
 
       - run: ls ./target
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: java-springboot-todo-1.0.0-SNAPSHOT.war
+          path: ./target
