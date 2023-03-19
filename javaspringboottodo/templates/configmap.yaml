@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: javaspringboottodo-configmap
-data:
-  username: sa
