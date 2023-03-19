@@ -1,6 +1,6 @@
 # todo-management-spring-boot
 
-## Mini Todo Management Project using Spring Boot + Spring MVC + Spring Security + JSP + Hibernate + H2 Database
+## Todo Management Project using Spring Boot + JSP + Hibernate + H2 Database
 
 ### Prerequisite
 1.Create a kubernets cluster using eks/aks <br>
@@ -22,7 +22,6 @@ $ kubectl delete -f simpleapp-ingress-rules.yaml
 ### Local Access
 http://127.0.0.1:8080/simpleapp/
 
-http://localhost:8080/actuator
-/health
+http://localhost:8080/actuator/health
 
 Credentials : admin/admin
